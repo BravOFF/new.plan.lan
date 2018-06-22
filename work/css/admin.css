@@ -1,0 +1,74 @@
+body{
+    font-family: EuropeExtendedC, serif !important;
+}
+.detail{
+    padding-top: 25px;
+}
+.detail h3 {
+    margin-top: 0;
+    border-bottom: 1px dashed #c1c1c1;
+    padding-bottom: 5px;
+}
+.list-plan{
+    font-size: 16px;
+}
+.param-tmpl{
+    border-left: 1px dashed #c1c1c1;
+    padding-bottom: 40px;
+}
+.DateTime{
+    border-top: 1px dashed #c1c1c1;
+    padding-top: 10px;
+}
+.DateTmeElement{
+    background: #f7f7f8;
+    border: 1px solid #edf0f2;
+    color: #555555;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ElementDelete{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.ElementDelete:hover{
+    color: red;
+}
+
+
+
+.form-group.Name {
+    width: 100%;
+}
+.form-group.UID, .form-group.Period, .form-group.Parent_UID, .form-group.type, .form-group.SORT  {
+    width: calc(20% - 10px);
+    margin-right: 10px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+.Buttons{
+    background-color: #f3f3f3;
+    border: 1px solid #d6d6d6;
+    padding: 15px;
+    box-shadow: 0 0 19px -3px black;
+}
+
+
+.fixed-pos{
+    bottom: 0;
+    position: fixed;
+    left: 50%;
+    margin-left: -585px;
+}

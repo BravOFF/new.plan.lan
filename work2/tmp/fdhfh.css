@@ -1,0 +1,44 @@
+/*
+
+<a href="javascript:history.go(-1)" class="but-back">Назад</a>
+
+*/
+main.tm-content {
+    position: relative;
+}
+a.but-back {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    border: 0;
+    background-color: #fff;
+    color: #f3bf68;
+    font-size: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+}
+a.but-back:hover {
+    color: #f1878a !important;
+}
+a.but-back:after {
+    content: '«';
+    position: absolute;
+    top: -1px;
+    left: -3px;
+}
+
+
+
+h3.uk-accordion-title:after {
+    content: '+';
+    position: absolute;
+    right: 10px;
+    font-size: 28px;
+    width: 18px;
+    border: 1px solid #000;
+    text-align: center;
+    border-radius: 25px;
+    display: block;
+    top: 4px;
+    padding-left: 3px;
+}

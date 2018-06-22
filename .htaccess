@@ -1,0 +1,10 @@
+AddDefaultCharset Off
+<IfModule dir_module>
+    DirectoryIndex index.html index.php
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule nodejs/ http://127.0.0.1:3000/ [P]
+
+</IfModule>

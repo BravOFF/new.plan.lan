@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/iap.png" type="image/png">
+    <title>Страница редактирования</title>
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Радактирование шаблона плана-графика</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container ">
+    <div class="row detail">
+        <div class="col-md-4">
+            <h3>Список шаблонов</h3>
+            <ul class="list-plan list-unstyled">
+                <li><a href="/">Основной план</a></li>
+            </ul>
+        </div>
+        <div class="col-md-8 param-tmpl">
+            <h3>Параметры шаблона</h3>
+
+
+            <section style="margin-bottom: 50px;">
+
+
+                <form id="formTMPL" name="formTMPL" role="form">
+
+                    <div class="form-group">
+                        <label for="titleName">Заголовок</label>
+                        <input type="text" name="titleName" class="form-control" id="titleName" placeholder="Заголовок">
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Начальная дата</label>
+                        <input type="text" name="startDate" class="form-control startDate" id="startDate">
+                    </div>
+                    <div class="DateTime">
+                    </div>
+                </form>
+
+            </section>
+
+
+        </div>
+    </div>
+</div>
+<div class="container navbar-fixed-bottom">
+    <div class="row detail">
+        <div class="col-md-offset-4 col-md-8">
+            <div style="overflow: hidden; padding-top: 20px; margin:auto -15px;">
+        <div class="Buttons">
+            <button type="submit" onclick="createElementField()" class="btn btn-success">Добавить
+            </button>
+            <button type="submit" onclick="saveTMPL(formTMPL)" style="float: right; margin-left: 10px;"
+                    class="btn btn-danger">Сохранить
+            </button>
+            <button type="submit" onclick="applyTMPL(formTMPL)" style="float: right;"
+                    class="btn btn-info">Применить
+            </button>
+
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<script src="js/jquery-3.2.0.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--<script src="js/jquery.maskkkk.js"></script>-->
+<script src="js/jquery.maskedinput.js"></script>
+<script src="js/functions.js"></script>
+<!--<script src="js/moment.js"></script>
+<script src="js/moment-with-locales.js"></script>-->
+<script src="js/admin.js"></script>
+</body>
+</html>

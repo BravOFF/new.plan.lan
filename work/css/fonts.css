@@ -1,0 +1,123 @@
+/*Стили шрифтов*/
+
+/*EuropeC*/
+@font-face {
+    font-family: 'EuropeC';
+    src: url('../fonts/EuropeC.eot');
+    src: local('☺'), url('../fonts/EuropeC.woff') format('woff'), url('../fonts/EuropeC.ttf') format('truetype'), url('../fonts/EuropeC.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeC';
+    src: url('../fonts/EuropeC-Bold.eot');
+    src: local('☺'), url('../fonts/EuropeC-Bold.woff') format('woff'), url('../fonts/EuropeC-Bold.ttf') format('truetype'), url('../fonts/EuropeC-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeC';
+    src: url('../fonts/EuropeC-Italic.eot');
+    src: local('☺'), url('../fonts/EuropeC-Italic.woff') format('woff'), url('../fonts/EuropeC-Italic.ttf') format('truetype'), url('../fonts/EuropeC-Italic.svg') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'EuropeC';
+    src: url('../fonts/EuropeC-BoldItalic.eot');
+    src: local('☺'), url('../fonts/EuropeC-BoldItalic.woff') format('woff'), url('../fonts/EuropeC-BoldItalic.ttf') format('truetype'), url('../fonts/EuropeC-BoldItalic.svg') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+/*END*/
+/*EuropeCondensedC*/
+@font-face {
+    font-family: 'EuropeCondensedC';
+    src: url('../fonts/EuropeCondensedC.eot');
+    src: local('☺'), url('../fonts/EuropeCondensedC.woff') format('woff'), url('../fonts/EuropeCondensedC.ttf') format('truetype'), url('../fonts/EuropeCondensedC.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeCondensedC';
+    src: url('../fonts/EuropeCondensedC-Bold.eot');
+    src: local('☺'), url('../fonts/EuropeCondensedC-Bold.woff') format('woff'), url('../fonts/EuropeCondensedC-Bold.ttf') format('truetype'), url('../fonts/EuropeCondensedC-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeCondensedC';
+    src: url('../fonts/EuropeCondensedC-Italic.eot');
+    src: local('☺'), url('../fonts/EuropeCondensedC-Italic.woff') format('woff'), url('../fonts/EuropeCondensedC-Italic.ttf') format('truetype'), url('../fonts/EuropeCondensedC-Italic.svg') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'EuropeCondensedC';
+    src: url('../fonts/EuropeCondensedC-BoldItalic.eot');
+    src: local('☺'), url('../fonts/EuropeCondensedC-BoldItalic.woff') format('woff'), url('../fonts/EuropeCondensedC-BoldItalic.ttf') format('truetype'), url('../fonts/EuropeCondensedC-BoldItalic.svg') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+/*END*/
+/*EuropeDemiC*/
+@font-face {
+    font-family: 'EuropeDemiC';
+    src: url('../fonts/EuropeDemiC.eot');
+    src: local('☺'), url('../fonts/EuropeDemiC.woff') format('woff'), url('../fonts/EuropeDemiC.ttf') format('truetype'), url('../fonts/EuropeDemiC.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeDemiC';
+    src: url('../fonts/EuropeDemiC-Italic.eot');
+    src: local('☺'), url('../fonts/EuropeDemiC-Italic.woff') format('woff'), url('../fonts/EuropeDemiC-Italic.ttf') format('truetype'), url('../fonts/EuropeDemiC-Italic.svg') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+/*END*/
+/*EuropeExtendedC*/
+@font-face {
+    font-family: 'EuropeExtendedC';
+    src: url("../fonts/EuropeExtendedC.eot");
+    src: local('☺'), url('../fonts/EuropeExtendedC.woff') format('woff'), url('../fonts/EuropeExtendedC.ttf') format('truetype'), url('../fonts/EuropeExtendedC.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeExtendedC';
+    src: url('../fonts/EuropeExtendedC-Bold.eot');
+    src: local('☺'), url('../fonts/EuropeExtendedC-Bold.woff') format('woff'), url('../fonts/EuropeExtendedC-Bold.ttf') format('truetype'), url('../fonts/EuropeExtendedC-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeExtendedC';
+    src: url('../fonts/EuropeExtendedC-Italic.eot');
+    src: local('☺'), url('../fonts/EuropeExtendedC-Italic.woff') format('woff'), url('../fonts/EuropeExtendedC-Italic.ttf') format('truetype'), url('../fonts/EuropeExtendedC-Italic.svg') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'EuropeExtendedC';
+    src: url('../fonts/EuropeExtendedC-BoldItalic.eot');
+    src: local('☺'), url('../fonts/EuropeExtendedC-BoldItalic.woff') format('woff'), url('../fonts/EuropeExtendedC-BoldItalic.ttf') format('truetype'), url('../fonts/EuropeExtendedC-BoldItalic.svg') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+/*END*/
+/*EuropeShadowC*/
+@font-face {
+    font-family: 'EuropeShadowC';
+    src: url('../fonts/EuropeShadowC.eot');
+    src: local('☺'), url('../fonts/EuropeShadowC.woff') format('woff'), url('../fonts/EuropeShadowC.ttf') format('truetype'), url('../fonts/EuropeShadowC.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeShadowC';
+    src: url('../fonts/EuropeShadowC-Italic.eot');
+    src: local('☺'), url('../fonts/EuropeShadowC-Italic.woff') format('woff'), url('../fonts/EuropeShadowC-Italic.ttf') format('truetype'), url('../fonts/EuropeShadowC-Italic.svg') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}

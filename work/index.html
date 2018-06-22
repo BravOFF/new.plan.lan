@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/iap.png" type="image/png">
+    <title>План-график по утверждению корректировки ФЦП ГЛОНАСС</title>
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        @media print {
+
+            h2.text-center{
+                font-family: EuropeExtendedC, serif !important;
+                color: #676766 !important;
+            }
+            .plan-graf{
+                font-family: EuropeExtendedC, serif !important;
+                border-bottom: 3px solid #305488 !important;
+            }
+            .plan-graf-years{
+                background-color: #cce2ff !important;
+            }
+            .plan-graf-months{
+                background-color: #cce2ff !important;
+                border-bottom: 2px solid #305488 !important;
+            }
+            .plan-graf-years .year {
+                font-weight: bold;
+                border-right: 1px dashed #333333 !important;
+            }
+            .year:first-child, .month:first-child, .line-setka>div:first-child{
+                border-left: 1px dashed #333333 !important;
+            }
+            .year p, .month p{
+                color: #305488 !important;
+            }
+            .old{
+                background-color: #F6F9FD !important;
+            }
+            .plan-graf-months .month{
+                border-right: 1px dashed #333333 !important;
+                border-bottom: 3px solid #305488 !important;
+            }
+            .line-setka>div{
+                border-right: 1px dashed #333333 !important;
+            }
+            .data-dot{
+                background-color: #BE2E21 !important;
+
+            }
+            .dot-text p{
+                color: #BE2E21 !important;
+            }
+            .data-line{
+                background-color: #305488 !important;
+            }
+            .line-text p{
+                color: #305488 !important;
+            }
+            .line-text p, .dot-text p{
+                background-color: #FFFFFF !important;
+            }
+            .no-print{
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="panel-admin no-print">
+    <a href="admin.html">Редактирование</a>
+    <a href="#" onclick="load_canvas();">Создать картинку</a>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="printscreen">
+                <div class="container">
+                <h2 id="titleName" class="text-center">План-график по утверждению корректировки ФЦП ГЛОНАСС <br>(приведение
+                    ресурсного обеспечения ФЦП ГЛОНАСС в соответствии <br>с федеральным законом о федеральном бюджете)
+                </h2>
+                </div>
+
+                <div id="plan_test" class="plan">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="imgs"></div>
+
+<canvas id="canvas"></canvas>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<script src="js/jquery-3.2.0.js"></script>
+<!--<script src=jquery.maskkkk.jsk.js"></script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/html2canvas/html2canvas.js"></script>
+<script src="js/canvas2image.js"></script>
+<script src="js/functions.js"></script>
+<!--<script src="js/moment.js"></script>
+<script src="js/moment-with-locales.js"></script>-->
+<script src="js/index.js"></script>
+</body>
+</html>
