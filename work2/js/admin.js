@@ -1,5 +1,5 @@
 $.ajax({
-    url: '../data-test.json',
+    url: '/data-test.json',
     dataType: 'json',
     //async: false,
     type: 'POST',
@@ -13,17 +13,17 @@ $.ajax({
         }
     }
 });
-DataCurrentLOC = JSON.parse(localStorage.getItem('DataCurrent'));
+// DataCurrentLOC = JSON.parse(localStorage.getItem('DataCurrent'));
 
 
 $.ajax({
-    url: '../data-etalon-test.json',
+    url: '/data-get.php?m=all',
     // url: 'data-etalon.json',
     dataType: 'json',
-    type: 'POST',
+    type: 'GET',
     success: function (data) {
 
-        getTMPL(data);
+        getTMPL(data[0]);
         /**/
     }
 });

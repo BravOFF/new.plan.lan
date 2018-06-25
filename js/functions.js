@@ -869,7 +869,7 @@ function saveCur(FORM) {
         }
         // console.log(DataCurrentLOC);
         $.ajax({
-            url: '../data-current-save.php',
+            url: '/data-current-save.php',
             dataType: 'json',
             data: {data: DataCurrentLOC},
             //async: false,
@@ -910,7 +910,7 @@ function saveCur(FORM) {
         }
         // console.log(DataCurrentLOC);
         $.ajax({
-            url: '../data-current-save.php',
+            url: '/data-current-save.php',
             dataType: 'json',
             data: {data: DataCurrentLOC},
             //async: false,
@@ -945,12 +945,28 @@ function saveCur(FORM) {
 
 }
 
-function getTMPL(data) {
+function getTMPL(data, id) {
 
-    const Date = data[0].Date;
-    const Name = data[0].Name;
-    const DateTime = data[0].DateTime;
+	console.log('this.id '+id);
+	ids = '';
+if (!id) {
+	ids = 0;
+}else {
+	for (k in data){
+		if (data[k]['id'] == id){
+			ids = k;
+		}
+	}
 
+}
+	console.log('ids '+ids);
+
+
+	const Date = data[ids].Date;
+	const Name = data[ids].Name;
+	const DateTime = data[ids].DateTime;
+
+    // console.log(id);
     DateTime.sort(arr_sort_SORT);
 
     formTMPL.titleName.value = Name;
@@ -1058,6 +1074,30 @@ function getTMPL(data) {
 
 }
 
+function getPLAN(id) {
+	ids = id;
+	$.ajax({
+		url: '/data-get.php?m=all',
+		// url: 'data-etalon.json',
+		dataType: 'json',
+		type: 'POST',
+		success: function (data) {
+
+			console.log(ids);
+			getTMPL(data, ids);
+			// getMENU(data);
+			/**/
+		}
+	});
+}
+
+function getMENU(data) {
+    for (k in data){
+        console.log(k);
+	    $( "#listItem" ).append( ' <li><a onclick="getPLAN('+data[k]['id']+')">'+data[k]['NameMenu']+'</a></li>' );
+    }
+}
+
 function saveTMPL(FORM) {
 
     dataEtalon = {};
@@ -1139,7 +1179,7 @@ function saveTMPL(FORM) {
     // console.log('---------------');
 
     $.ajax({
-        url: '../data-etalon-save.php',
+        url: '/data-etalon-save.php',
         dataType: 'json',
         data: {data: arrOK},
         //async: false,

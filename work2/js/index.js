@@ -18,7 +18,7 @@ var graf_ID = '#plan_test';
 
 
 $.ajax({
-    url: '../holidays.json',
+    url: '/holidays.json',
     dataType: 'json',
     //async: false,
     type: 'POST',
@@ -33,7 +33,7 @@ $.ajax({
     }
 });
 $.ajax({
-    url: '../data-test.json',
+    url: '/data-test.json',
     dataType: 'json',
     //async: false,
     type: 'POST',
@@ -50,7 +50,7 @@ $.ajax({
  DataCurrentLOC = JSON.parse(localStorage.getItem('DataCurrent'));
 
 $.ajax({
-    url: '../data-etalon-test.json',
+    url: '/data-etalon-test.json',
     // url: 'data-etalon.json',
     dataType: 'json',
     //async: false,

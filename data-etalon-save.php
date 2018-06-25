@@ -11,7 +11,10 @@ if($_POST['data']){
 }else {
     $arrayData = array();
 }
-//print_r(json_encode($arrayData));
+
+//$t = json_encode($arrayData);
+//$arrayData[0]['DateTime'] = json_encode($arrayData[0]['DateTime']);
+//print_r($arrayData[0]);
 
 
 $local_file = "data-etalon-test.json";

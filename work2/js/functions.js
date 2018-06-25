@@ -893,7 +893,7 @@ function saveCur(FORM) {
         }
         // console.log(DataCurrentLOC);
         $.ajax({
-            url: '../data-current-save.php',
+            url: '/data-current-save.php',
             dataType: 'json',
             data: {data: DataCurrentLOC},
             //async: false,
@@ -934,7 +934,7 @@ function saveCur(FORM) {
         }
         // console.log(DataCurrentLOC);
         $.ajax({
-            url: '../data-current-save.php',
+            url: '/data-current-save.php',
             dataType: 'json',
             data: {data: DataCurrentLOC},
             //async: false,
@@ -1163,7 +1163,7 @@ function saveTMPL(FORM) {
     // console.log('---------------');
 
     $.ajax({
-        url: '../data-etalon-save.php',
+        url: '/data-etalon-save.php',
         dataType: 'json',
         data: {data: arrOK},
         //async: false,
