@@ -947,15 +947,19 @@ function saveCur(FORM) {
 
 function getTMPL(data, id) {
 
+	console.log(data);
 	console.log('this.id '+id);
 	ids = '';
 if (!id) {
 	ids = 0;
+	id =data[ids]['id'];
 }else {
 	for (k in data){
 		if (data[k]['id'] == id){
 			ids = k;
-		}
+		}else if (data[k]['IdPlan'] == id){
+			ids = k;
+        }
 	}
 
 }
@@ -965,11 +969,14 @@ if (!id) {
 	const Date = data[ids].Date;
 	const Name = data[ids].Name;
 	const DateTime = data[ids].DateTime;
+	const NameMenu = data[ids].NameMenu;
 
-    // console.log(id);
+    console.log(DateTime);
     DateTime.sort(arr_sort_SORT);
 
+    formTMPL.IdPlan.value = id;
     formTMPL.titleName.value = Name;
+    formTMPL.NameMenu.value = NameMenu;
     formTMPL.startDate.value = Date;
     // FORM.curDate.value
 
@@ -1037,7 +1044,7 @@ if (!id) {
                 inputEL.setAttribute('id', key + '-' + DateTime[i].UID);
                 inputEL.setAttribute('name', key + '-' + DateTime[i].UID);
                 inputEL.setAttribute('type', 'text');
-                inputEL.setAttribute('value', DateTime[i][key]);
+                inputEL.setAttribute('value', decodeHtml(DateTime[i][key]));
                 if (DateTime[i].type == 'dot' && key == 'Period') {
                     inputEL.disabled = true;
                 } else if (key == 'UID') {
@@ -1075,34 +1082,70 @@ if (!id) {
 }
 
 function getPLAN(id) {
-	ids = id;
+	if (!id) {
+		ids = 0;
+	}else {
+		ids = id;
+	}
 	$.ajax({
 		url: '/data-get.php?m=all',
 		// url: 'data-etalon.json',
 		dataType: 'json',
 		type: 'POST',
 		success: function (data) {
-
 			console.log(ids);
 			getTMPL(data, ids);
-			// getMENU(data);
-			/**/
+			getMENU(data, id);
 		}
 	});
 }
 
-function getMENU(data) {
+function getMENU(data, id) {
+	if (!id) {
+		ids = 0;
+		id =data[ids]['id'];
+	}
+	$( "#listItem" ).html('');
+	$( "#listItem" ).append('<li style="padding-bottom: 15px"><a class="btn btn-success" onclick="addPlan()">Добавить план-график</a></li>');
     for (k in data){
-        console.log(k);
-	    $( "#listItem" ).append( ' <li><a onclick="getPLAN('+data[k]['id']+')">'+data[k]['NameMenu']+'</a></li>' );
+	    $( "#listItem" ).append( ' <li><a class="li-list-plan" id="idPl-'+data[k]['id']+'" onclick="getPLAN('+data[k]['id']+')">'+data[k]['NameMenu']+'</a><span class="delPlan" onclick="delPlan('+data[k]['id']+')">X</span></li>' );
+	    if (data[k]['id'] == id){
+        $('#idPl-'+data[k]['id']).css({'text-decoration': 'underline', 'text-decoration-color': 'red'});
+	    }
     }
+}
+
+function addPlan() {
+	$.ajax({
+		url: '/data-get.php?m=add',
+		dataType: 'json',
+		type: 'POST',
+		success: function (res) {
+		    newId = res['id'];
+			console.log(newId);
+			getPLAN(newId);
+		}
+	});
+}
+
+function delPlan(id) {
+	$.ajax({
+		url: '/data-get.php?m=del&id='+id,
+		dataType: 'json',
+		type: 'POST',
+		success: function (res) {
+			getPLAN();
+		}
+	});
 }
 
 function saveTMPL(FORM) {
 
     dataEtalon = {};
     DateTime = [];
+    dataEtalon.IdPlan = FORM.IdPlan.value;
     dataEtalon.Name = FORM.titleName.value;
+    dataEtalon.NameMenu = FORM.NameMenu.value;
     dataEtalon.Date = FORM.startDate.value;
     dataEtalon.DateTime = [];
     arrElems = [];
@@ -1178,7 +1221,7 @@ function saveTMPL(FORM) {
     // console.log(dataEtalon.DateTime);
     // console.log('---------------');
 
-    $.ajax({
+  /*  $.ajax({
         url: '/data-etalon-save.php',
         dataType: 'json',
         data: {data: arrOK},
@@ -1189,9 +1232,28 @@ function saveTMPL(FORM) {
             getTMPL(arrOK);
 
         }
+    });*/
+
+    $.ajax({
+        url: '/data-get.php',
+        dataType: 'json',
+        data: {m: 'update', data: arrOK},
+        //async: false,
+        type: 'POST',
+        success: function (res) {
+            console.log(res);
+
+	        getPLAN(FORM.IdPlan.value);
+
+            // getTMPL(arrOK, FORM.IdPlan.value);
+            // getMENU(arrOK, FORM.IdPlan.value);
+
+        }
     });
     // console.log(arrOK);
-    getTMPL(arrOK);
+	getPLAN(FORM.IdPlan.value);
+    // getTMPL(arrOK, FORM.IdPlan.value);
+    // getMENU(arrOK, FORM.IdPlan.value);
 }
 
 
@@ -1199,7 +1261,9 @@ function applyTMPL(FORM) {
 
     dataEtalon = {};
     DateTime = [];
+    dataEtalon.IdPlan = FORM.IdPlan.value;
     dataEtalon.Name = FORM.titleName.value;
+    dataEtalon.NameMenu = FORM.NameMenu.value;
     dataEtalon.Date = FORM.startDate.value;
     dataEtalon.DateTime = [];
     arrElems = [];
@@ -1408,4 +1472,24 @@ function load_canvas()
 
     });
 
+}
+function escapeHtml(str) {
+	var map = {
+			'&': '&amp;',
+			'<': '&lt;',
+			'>': '&gt;',
+			'"': '&quot;',
+			"'": '&#039;'
+		};
+	return str.replace(/[&<>"']/g, function(m) {return map[m];});
+}
+function decodeHtml(str) {
+	var map = {
+			'&amp;': '&',
+			'&lt;': '<',
+			'&gt;': '>',
+			'&quot;': '"',
+			'&#039;': "'"
+		};
+	return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m) {return map[m];});
 }

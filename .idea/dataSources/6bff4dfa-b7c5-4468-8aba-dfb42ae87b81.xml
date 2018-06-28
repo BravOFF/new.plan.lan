@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="bitrix_31gghdfh">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="bitrix_79jghj656"/>
+    <schema id="4" parent="1" name="bitrix_81"/>
+    <schema id="5" parent="1" name="bitrix_95345"/>
+    <schema id="6" parent="1" name="bitrix_rps"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="korolev_db"/>
+    <schema id="9" parent="1" name="korolev_db2"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="p321654_yana"/>
+    <schema id="12" parent="1" name="performance_schema"/>
+    <schema id="13" parent="1" name="plan_db">
+      <Visible>1</Visible>
+    </schema>
+    <schema id="14" parent="1" name="start_glonass_db"/>
+    <schema id="15" parent="1" name="tara_db"/>
+    <table id="16" parent="13" name="list_plan"/>
+    <column id="17" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="18" parent="16" name="Name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="19" parent="16" name="Date">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="20" parent="16" name="DateTime">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="21" parent="16" name="NameMenu">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="22" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

@@ -72,3 +72,14 @@ body{
     left: 50%;
     margin-left: -585px;
 }
+.delPlan{
+    position: relative;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.delPlan:hover{
+    color: red;
+}
+.li-list-plan{
+    cursor: pointer;
+}
