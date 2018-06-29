@@ -132,7 +132,9 @@ function dateHolidays(date) {
     date = new Date(date);
     //noinspection BadExpressionStatementJS
     status;
-    arrHolidays = JSON.parse(localStorage.getItem('arrHolidays'));
+    erttre = localStorage.getItem('arrHolidays');
+    // console.log(erttre);
+    arrHolidays = JSON.parse(erttre);
     if (arrHolidays['data'][date.getFullYear()]) {
         var year = arrHolidays['data'][date.getFullYear()];
         if (year[date.getMonth() + 1]) {
@@ -458,7 +460,7 @@ function grafTableHeader(graf_ID, start, arrayYear) {
     // Массив конечных точек времени
 
 
-    console.log(arrayYear);
+    // console.log(arrayYear);
 
 
     var wr = [];
@@ -532,7 +534,7 @@ function grafTableHeader(graf_ID, start, arrayYear) {
 
     for (s in y) {
         fm = y[s];
-        console.log(s);
+        // console.log(s);
         // console.log(y[s]);
 fddg = 0;
         for (tt in fm) {
@@ -542,8 +544,8 @@ fddg = 0;
             fddg = tes + fddg;
         }
         allDAYS = fddg + allDAYS;
-        console.log('количество  - '+fddg);
-        console.log('ширина  - '+widthEL2 * fddg);
+        // console.log('количество  - '+fddg);
+        // console.log('ширина  - '+widthEL2 * fddg);
 
 
         // widthELYear = widthEL * y[s].length;
@@ -595,13 +597,13 @@ fddg = 0;
 
 
 
-            console.log(fm[ss]);
-            console.log(new Date(s, fm[ss] - 1, 5).daysInMonth());
-            console.log(widthEL2);
-            console.log('---------');
-            console.log(widthEL);
-            console.log(widthEL2 * (new Date(s, fm[ss] - 1, 5).daysInMonth()));
-            console.log('---------');
+            // console.log(fm[ss]);
+            // console.log(new Date(s, fm[ss] - 1, 5).daysInMonth());
+            // console.log(widthEL2);
+            // console.log('---------');
+            // console.log(widthEL);
+            // console.log(widthEL2 * (new Date(s, fm[ss] - 1, 5).daysInMonth()));
+            // console.log('---------');
 
 
             divM.innerHTML = '<p>' + nameMonth[ssm] + '</p>';
@@ -631,11 +633,11 @@ fddg = 0;
     widthALL = widthEL2 * allDAYS;
 
 
-    console.log('////////////////////');
-    console.log(widthALL);
-    console.log(countM);
-    console.log(arrCountM);
-    console.log('////////////////');
+    // console.log('////////////////////');
+    // console.log(widthALL);
+    // console.log(countM);
+    // console.log(arrCountM);
+    // console.log('////////////////');
     // console.log(widthALL2);
 
     $(graf_ID + ' .plan-graf').css("width", widthALL + 'px');
@@ -947,7 +949,7 @@ function saveCur(FORM) {
 
 function getTMPL(data, id) {
 
-	console.log(data);
+	// console.log(data);
 	console.log('this.id '+id);
 	ids = '';
 if (!id) {
@@ -971,7 +973,7 @@ if (!id) {
 	const DateTime = data[ids].DateTime;
 	const NameMenu = data[ids].NameMenu;
 
-    console.log(DateTime);
+    // console.log(DateTime);
     DateTime.sort(arr_sort_SORT);
 
     formTMPL.IdPlan.value = id;
@@ -995,6 +997,8 @@ if (!id) {
     labelName.Parent_UID = 'Родитель';
     labelName.type = 'Тип';
     labelName.SORT = 'Сортировка';
+    labelName.CurDate = 'Дата окончания';
+    labelName.Comment = 'Комментарий';
 
     selectEL = {};
     selectEL.line = 'Линия';
@@ -1039,6 +1043,9 @@ if (!id) {
                     o++;
                 }
             } else {
+            	if(DateTime[i][key] == undefined){
+		            DateTime[i][key] = '';
+            	}
                 inputEL = document.createElement('input');
                 inputEL.className = 'form-control ' + key;
                 inputEL.setAttribute('id', key + '-' + DateTime[i].UID);
@@ -1096,8 +1103,146 @@ function getPLAN(id) {
 			console.log(ids);
 			getTMPL(data, ids);
 			getMENU(data, id);
+			setTimeout(function () {
+				$('input.CurDate').mask("d9.n9.9999", {placeholder: "дд.мм.гггг"});
+			}, 500);
 		}
 	});
+}
+
+function getPLANforINDEX(id) {
+	if (!id) {
+		ids = 0;
+	}else {
+		// ids = id;
+	}
+
+	var graf_ID = '#plan_test';
+	$.ajax({
+		url: '/holidays.json',
+		dataType: 'json',
+		//async: false,
+		type: 'POST',
+		success: function (arrHolidays) {
+			try {
+				localStorage.setItem('arrHolidays', JSON.stringify(arrHolidays));
+			} catch (e) {
+				if (e == QUOTA_EXCEEDED_ERR) {
+					alert('Превышен лимит');
+				}
+			}
+		}
+	});
+	$.ajax({
+		url: '/data-get.php?m=all',
+		dataType: 'json',
+		//async: false,
+		type: 'POST',
+		success: function (DataCurrent) {
+			try {
+
+				if (!id) {
+					ids = 0;
+					id =DataCurrent[ids]['id'];
+				}else {
+					console.log(DataCurrent);
+					for (k in data){
+						if (DataCurrent[k]['id'] == id){
+							ids = k;
+						}else if (DataCurrent[k]['IdPlan'] == id){
+							ids = k;
+						}
+					}
+
+				}
+
+
+			} catch (e) {
+				if (e == QUOTA_EXCEEDED_ERR) {
+					alert('Превышен лимит');
+				}
+			}
+		}
+	});
+
+
+	$.ajax({
+		url: '/data-get.php?m=all',
+		// url: 'data-etalon.json',
+		dataType: 'json',
+		//async: false,
+		type: 'POST',
+		success: function(data){
+
+			if (!id) {
+				ids = 0;
+				id =data[ids]['id'];
+			}else {
+				for (k in data){
+					if (data[k]['id'] == id){
+						ids = k;
+					}else if (data[k]['IdPlan'] == id){
+						ids = k;
+					}
+				}
+
+			}
+
+			localStorage.removeItem("DataCurrent");
+			localStorage.setItem('DataCurrent', JSON.stringify(DataCurrent[ids]['DateTime']));
+
+
+			console.log(ids);
+			console.log(data);
+			const start = data[ids].Date;
+			titleName = document.getElementById('titleName');
+
+			console.log(titleName);
+
+			titleName.innerHTML = data[ids].Name;
+
+			var arr = data[ids].DateTime;
+			var arrayYears = arrayYear(start, arr);
+
+			grafTableHeader(graf_ID, start, arrayYears);
+			grafLineData(graf_ID, start, arrayYears);
+
+			$(window).resize(function(){
+				//console.log($('.month').outerWidth());
+				grafTableHeader(graf_ID, start, arrayYears);
+				grafLineData(graf_ID, start, arrayYears);
+			});
+
+			try {
+				localStorage.setItem('DateTime', JSON.stringify(data[ids].DateTime));
+				localStorage.setItem('start', JSON.stringify(start));
+			} catch (e) {
+				if (e == QUOTA_EXCEEDED_ERR) {
+					alert('Превышен лимит');
+				}
+			}
+			getMENUforINDEX(data, id);
+		}
+	});
+	DataCurrentLOC = JSON.parse(localStorage.getItem('DataCurrent'));
+	start = JSON.parse(localStorage.getItem('start'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 function getMENU(data, id) {
@@ -1109,6 +1254,20 @@ function getMENU(data, id) {
 	$( "#listItem" ).append('<li style="padding-bottom: 15px"><a class="btn btn-success" onclick="addPlan()">Добавить план-график</a></li>');
     for (k in data){
 	    $( "#listItem" ).append( ' <li><a class="li-list-plan" id="idPl-'+data[k]['id']+'" onclick="getPLAN('+data[k]['id']+')">'+data[k]['NameMenu']+'</a><span class="delPlan" onclick="delPlan('+data[k]['id']+')">X</span></li>' );
+	    if (data[k]['id'] == id){
+        $('#idPl-'+data[k]['id']).css({'text-decoration': 'underline', 'text-decoration-color': 'red'});
+	    }
+    }
+}
+
+function getMENUforINDEX(data, id) {
+	if (!id) {
+		ids = 0;
+		id =data[ids]['id'];
+	}
+	$( "#listItem" ).html('');
+    for (k in data){
+	    $( "#listItem" ).append( ' <li><a class="li-list-plan" id="idPl-'+data[k]['id']+'" onclick="getPLANforINDEX('+data[k]['id']+')">'+data[k]['NameMenu']+'</a></li>' );
 	    if (data[k]['id'] == id){
         $('#idPl-'+data[k]['id']).css({'text-decoration': 'underline', 'text-decoration-color': 'red'});
 	    }
@@ -1164,6 +1323,8 @@ function saveTMPL(FORM) {
         elementField.type = '';
         elementField.Parent_UID = '';
         elementField.SORT = '';
+        elementField.CurDate = '';
+        elementField.Comment = '';
 
         ELEM = arrElems[i];
         ID = ELEM.id.split('-');
@@ -1174,6 +1335,8 @@ function saveTMPL(FORM) {
         type = FORM['type-' + ID[1]].value;
         Parent_UID = FORM['Parent_UID-' + ID[1]].value;
         SORT = FORM['SORT-' + ID[1]].value;
+	    CurDate = FORM['CurDate-' + ID[1]].value;
+	    Comment = FORM['Comment-' + ID[1]].value;
 
 
         elementField.UID = UID;
@@ -1182,6 +1345,8 @@ function saveTMPL(FORM) {
         elementField.type = type;
         elementField.Parent_UID = Parent_UID;
         elementField.SORT = SORT;
+        elementField.CurDate = CurDate;
+        elementField.Comment = Comment;
 
         dataEtalon.DateTime[i] = elementField;
 
@@ -1281,6 +1446,8 @@ function applyTMPL(FORM) {
         elementField.type = '';
         elementField.Parent_UID = '';
         elementField.SORT = '';
+        elementField.CurDate = '';
+        elementField.Comment = '';
 
         ELEM = arrElems[i];
         ID = ELEM.id.split('-');
@@ -1291,6 +1458,8 @@ function applyTMPL(FORM) {
         type = FORM['type-' + ID[1]].value;
         Parent_UID = FORM['Parent_UID-' + ID[1]].value;
         SORT = FORM['SORT-' + ID[1]].value;
+	    CurDate = FORM['CurDate-' + ID[1]].value;
+	    Comment = FORM['Comment-' + ID[1]].value;
 
         elementField.UID = UID;
         elementField.Name = Name;
@@ -1298,6 +1467,8 @@ function applyTMPL(FORM) {
         elementField.type = type;
         elementField.Parent_UID = Parent_UID;
         elementField.SORT = SORT;
+        elementField.CurDate = CurDate;
+        elementField.Comment = Comment;
 
         dataEtalon.DateTime[i] = elementField;
 
@@ -1370,6 +1541,8 @@ function createElementField() {
     labelName.Parent_UID = 'Родитель';
     labelName.type = 'Тип';
     labelName.SORT = 'Сортировка';
+    labelName.CurDate = 'Дата окончания';
+    labelName.Comment = 'Комментарий';
 
     selectEL = {};
     selectEL.line = 'Линия';

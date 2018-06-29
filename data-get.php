@@ -40,7 +40,7 @@ foreach ($myrow as $k => $v){
 }
 
 if ($_REQUEST['m'] == 'add') {
-	$DateTime = '[{"UID":"1","Name":"Главная точка","Period":"","type":"dot","Parent_UID":"","SORT":"100"},{"UID":"2","Name":"Линия","Period":"30","type":"line","Parent_UID":"1","SORT":"200"}]';
+	$DateTime = '[{"UID":"1","Name":"Главная точка","Period":"","type":"dot","Parent_UID":"","SORT":"100","CurDate":"","Comment":""},{"UID":"2","Name":"Линия","Period":"30","type":"line","Parent_UID":"1","SORT":"200","CurDate":"","Comment":""}]';
 	$result = mysql_query ("INSERT INTO plan_db.list_plan (Name, Date, DateTime, NameMenu) VALUES ('Новый график', '28.06.2018', '$DateTime', 'Новый график');");
 	if ($result == 'true') {
 		$id =  mysql_insert_id();

@@ -33,13 +33,30 @@ $.ajax({
     }
 });
 $.ajax({
-    url: '/data-test.json',
+    url: '/data-get.php?m=all',
     dataType: 'json',
     //async: false,
     type: 'POST',
     success: function (DataCurrent) {
+id = false;
         try {
-            localStorage.setItem('DataCurrent', JSON.stringify(DataCurrent));
+
+	        if (!id) {
+		        ids = 0;
+
+		        id =DataCurrent[ids]['id'];
+
+	        }else {
+		        for (k in data){
+			        if (DataCurrent[k]['id'] == id){
+				        ids = k;
+			        }else if (DataCurrent[k]['IdPlan'] == id){
+				        ids = k;
+			        }
+		        }
+	        }
+	        localStorage.removeItem("DataCurrent");
+            localStorage.setItem('DataCurrent', JSON.stringify(DataCurrent[ids]['DateTime']));
         } catch (e) {
             if (e == QUOTA_EXCEEDED_ERR) {
                 alert('Превышен лимит');
@@ -50,7 +67,7 @@ $.ajax({
  DataCurrentLOC = JSON.parse(localStorage.getItem('DataCurrent'));
 
 $.ajax({
-    url: '/data-etalon-test.json',
+    url: '/data-get.php?m=all',
     // url: 'data-etalon.json',
     dataType: 'json',
     //async: false,
@@ -93,6 +110,7 @@ const start = data[0].Date;
                 alert('Превышен лимит');
             }
         }
+	    getMENUforINDEX(data);
     }
 });
 

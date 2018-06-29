@@ -53,6 +53,14 @@ body{
     width: calc(20% - 10px);
     margin-right: 10px;
 }
+.form-group.CurDate{
+    width: calc(23% - 10px);
+    margin-right: 10px;
+}
+.form-group.Comment{
+    width: calc(77% - 10px);
+    margin-right: 10px;
+}
 
 .form-group:last-child {
     margin-right: 0;

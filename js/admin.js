@@ -34,5 +34,14 @@ jQuery(function ($) {
     $.mask.definitions['n'] = '[0-1]';
     $.mask.definitions['d'] = '[0-3]';
 
+    setTimeout(function () {
+	    $('input.CurDate').mask("d9.n9.9999", {placeholder: "дд.мм.гггг"});
+	    $('input.CurDate').each(function (index, value) {
+
+	    });
+    }, 500);
+
     $('#startDate').mask("d9.n9.9999", {placeholder: "дд.мм.гггг"});
+
+
 });
